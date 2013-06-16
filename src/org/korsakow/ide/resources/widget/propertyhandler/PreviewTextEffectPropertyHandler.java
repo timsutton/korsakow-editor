@@ -1,0 +1,33 @@
+package org.korsakow.ide.resources.widget.propertyhandler;
+
+import java.util.Collection;
+
+import javax.swing.JComboBox;
+
+import org.korsakow.ide.resources.widget.DefaultPropertyHandler;
+import org.korsakow.ide.resources.widget.PreviewTextEffect;
+import org.korsakow.ide.resources.widget.WidgetModel;
+import org.korsakow.ide.ui.components.model.KComboboxModel;
+
+public class PreviewTextEffectPropertyHandler extends DefaultPropertyHandler
+{
+	@Override
+	public void initializeEditor(Collection<? extends WidgetModel> widgets, JComboBox editor, String propertyName) {
+		super.initializeEditor(widgets, editor, propertyName);
+		editor.setEditable(false);
+ 		editor.setRenderer(this);
+ 		Object value = getCommonValue(widgets, propertyName);
+		editor.setModel(new KComboboxModel(new Object[] {
+				PreviewTextEffect.NONE,
+				PreviewTextEffect.ANIMATE,
+		}, value));
+	}
+	@Override
+	protected String formatProperty(String propertyName, Object propertyValue) {
+		if (propertyValue == null)
+			return null;
+		if (propertyValue instanceof PreviewTextEffect == false)
+			propertyValue = PreviewTextEffect.forId(propertyValue.toString());
+		return ((PreviewTextEffect)propertyValue).getDisplay();
+	}
+}

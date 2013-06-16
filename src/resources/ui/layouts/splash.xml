@@ -1,0 +1,37 @@
+<layout width="500" height="292">
+    <component>
+        <id>image</id>
+        <x>0</x>
+        <y>0</y>
+        <width>500</width>
+        <height>292</height>
+    </component>
+    <component>
+        <id>text</id>
+        <x>240</x>
+        <y>98</y>
+        <width>168</width>
+        <height>16</height>
+    </component>
+    <component>
+    	<id>version</id>
+    	<x>0</x>
+    	<y>255</y>
+    	<width>500</width>
+    	<height>16</height>
+    </component>
+    <component>
+    	<id>uuidLabel</id>
+    	<x>95</x>
+    	<y>275</y>
+    	<width>40</width>
+    	<height>16</height>
+    </component>
+    <component>
+    	<id>uuidField</id>
+    	<x>135</x>
+    	<y>275</y>
+    	<width>300</width>
+    	<height>16</height>
+    </component>
+</layout>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<korsakow>
+    <interfaces>
+        <Interface>
+            <id><![CDATA[${id1}]]></id>
+            <version><![CDATA[1]]></version>
+            <name><![CDATA[3-Link Interface]]></name>
+            <gridWidth><![CDATA[20]]></gridWidth>
+            <gridHeight><![CDATA[20]]></gridHeight>
+            <clickSoundVolume><![CDATA[1.0]]></clickSoundVolume>
+            <widgets>
+                <Widget>
+                    <id><![CDATA[${id2}]]></id>
+                    <version><![CDATA[1]]></version>
+                    <widgetType><![CDATA[org.korsakow.widget.MainMedia]]></widgetType>
+                    <persistCondition>never</persistCondition>
+                    <persistAction>replace</persistAction>
+                    <x><![CDATA[0]]></x>
+                    <y><![CDATA[0]]></y>
+                    <width><![CDATA[720]]></width>
+                    <height><![CDATA[407]]></height>
+                </Widget>
+                <Widget>
+                    <id><![CDATA[${id3}]]></id>
+                    <version><![CDATA[1]]></version>
+                    <widgetType><![CDATA[org.korsakow.widget.SnuAutoLink]]></widgetType>
+                    <persistCondition>never</persistCondition>
+                    <persistAction>replace</persistAction>
+                    <x><![CDATA[0]]></x>
+                    <y><![CDATA[432]]></y>
+                    <width><![CDATA[240]]></width>
+                    <height><![CDATA[135]]></height>
+                    <index dynamic="true"><![CDATA[0]]></index>
+                </Widget>
+                <Widget>
+                    <id><![CDATA[${id4}]]></id>
+                    <version><![CDATA[1]]></version>
+                    <widgetType><![CDATA[org.korsakow.widget.SnuAutoLink]]></widgetType>
+                    <persistCondition>never</persistCondition>
+                    <persistAction>replace</persistAction>
+                    <x><![CDATA[240]]></x>
+                    <y><![CDATA[432]]></y>
+                    <width><![CDATA[240]]></width>
+                    <height><![CDATA[135]]></height>
+                    <index dynamic="true"><![CDATA[1]]></index>
+                </Widget>
+                <Widget>
+                    <id><![CDATA[${id5}]]></id>
+                    <version><![CDATA[1]]></version>
+                    <widgetType><![CDATA[org.korsakow.widget.SnuAutoLink]]></widgetType>
+                    <persistCondition>never</persistCondition>
+                    <persistAction>replace</persistAction>
+                    <x><![CDATA[480]]></x>
+                    <y><![CDATA[432]]></y>
+                    <width><![CDATA[240]]></width>
+                    <height><![CDATA[135]]></height>
+                    <index dynamic="true"><![CDATA[2]]></index>
+                </Widget>
+                <Widget>
+                    <id><![CDATA[${id6}]]></id>
+                    <version><![CDATA[1]]></version>
+                    <widgetType><![CDATA[org.korsakow.widget.Subtitles]]></widgetType>
+                    <persistCondition>never</persistCondition>
+                    <persistAction>replace</persistAction>
+                    <x><![CDATA[0]]></x>
+                    <y><![CDATA[407]]></y>
+                    <width><![CDATA[720]]></width>
+                    <height><![CDATA[25]]></height>
+                </Widget>
+                <Widget>
+                    <id><![CDATA[${id7}]]></id>
+                    <version><![CDATA[1]]></version>
+                    <widgetType><![CDATA[org.korsakow.widget.InsertText]]></widgetType>
+                    <persistCondition>never</persistCondition>
+                    <persistAction>replace</persistAction>
+                    <x><![CDATA[0]]></x>
+                    <y><![CDATA[0]]></y>
+                    <width><![CDATA[720]]></width>
+                    <height><![CDATA[407]]></height>
+                </Widget>
+            </widgets>
+        </Interface>
+    </interfaces>
+</korsakow>

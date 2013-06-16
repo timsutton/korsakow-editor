@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<korsakow versionMajor="5.0.5" versionMinor="22.1">
+    <Interface>
+        <id><![CDATA[40]]></id>
+        <name><![CDATA[16x9 - 3 Right]]></name>
+        <gridWidth><![CDATA[16]]></gridWidth>
+        <gridHeight><![CDATA[9]]></gridHeight>
+        <keywords/>
+        <widgets>
+            <Widget>
+                <id><![CDATA[122]]></id>
+                <widgetType><![CDATA[org.korsakow.widget.MainMedia]]></widgetType>
+                <x><![CDATA[32]]></x>
+                <y><![CDATA[181]]></y>
+                <width><![CDATA[720]]></width>
+                <height><![CDATA[405]]></height>
+                <keywords/>
+                <scalingPolicy dynamic="true"><![CDATA[scaledownmaintainaspectratio]]></scalingPolicy>
+            </Widget>
+            <Widget>
+                <id><![CDATA[123]]></id>
+                <widgetType><![CDATA[org.korsakow.widget.SnuAutoLink]]></widgetType>
+                <x><![CDATA[752]]></x>
+                <y><![CDATA[181]]></y>
+                <width><![CDATA[240]]></width>
+                <height><![CDATA[135]]></height>
+                <keywords/>
+                <fontColor dynamic="true"><![CDATA[#FFFFFF]]></fontColor>
+                <scalingPolicy dynamic="true"><![CDATA[maintainaspectratio]]></scalingPolicy>
+                <fontWeight dynamic="true"><![CDATA[normal]]></fontWeight>
+                <index dynamic="true"><![CDATA[0]]></index>
+                <textDecoration dynamic="true"><![CDATA[none]]></textDecoration>
+                <fontStyle dynamic="true"><![CDATA[normal]]></fontStyle>
+	            <fontSize dynamic="true"><![CDATA[10]]></fontSize>
+                <previewTextMode dynamic="true"><![CDATA[always]]></previewTextMode>
+                <previewTextEffect dynamic="true"><![CDATA[none]]></previewTextEffect>
+                <horizontalTextAlignment dynamic="true"><![CDATA[center]]></horizontalTextAlignment>
+                <verticalTextAlignment dynamic="true"><![CDATA[top]]></verticalTextAlignment>
+            </Widget>
+            <Widget>
+                <id><![CDATA[124]]></id>
+                <widgetType><![CDATA[org.korsakow.widget.SnuAutoLink]]></widgetType>
+                <x><![CDATA[752]]></x>
+                <y><![CDATA[316]]></y>
+                <width><![CDATA[240]]></width>
+                <height><![CDATA[135]]></height>
+                <keywords/>
+                <fontColor dynamic="true"><![CDATA[#FFFFFF]]></fontColor>
+                <scalingPolicy dynamic="true"><![CDATA[maintainaspectratio]]></scalingPolicy>
+                <fontWeight dynamic="true"><![CDATA[normal]]></fontWeight>
+                <index dynamic="true"><![CDATA[1]]></index>
+                <textDecoration dynamic="true"><![CDATA[none]]></textDecoration>
+                <fontStyle dynamic="true"><![CDATA[normal]]></fontStyle>
+	            <fontSize dynamic="true"><![CDATA[10]]></fontSize>
+                <previewTextMode dynamic="true"><![CDATA[always]]></previewTextMode>
+                <previewTextEffect dynamic="true"><![CDATA[none]]></previewTextEffect>
+                <horizontalTextAlignment dynamic="true"><![CDATA[center]]></horizontalTextAlignment>
+                <verticalTextAlignment dynamic="true"><![CDATA[top]]></verticalTextAlignment>
+            </Widget>
+            <Widget>
+                <id><![CDATA[125]]></id>
+                <widgetType><![CDATA[org.korsakow.widget.SnuAutoLink]]></widgetType>
+                <x><![CDATA[752]]></x>
+                <y><![CDATA[451]]></y>
+                <width><![CDATA[240]]></width>
+                <height><![CDATA[135]]></height>
+                <keywords/>
+                <fontColor dynamic="true"><![CDATA[#FFFFFF]]></fontColor>
+                <scalingPolicy dynamic="true"><![CDATA[maintainaspectratio]]></scalingPolicy>
+                <fontWeight dynamic="true"><![CDATA[normal]]></fontWeight>
+                <index dynamic="true"><![CDATA[2]]></index>
+                <textDecoration dynamic="true"><![CDATA[none]]></textDecoration>
+                <fontStyle dynamic="true"><![CDATA[normal]]></fontStyle>
+	            <fontSize dynamic="true"><![CDATA[10]]></fontSize>
+                <previewTextMode dynamic="true"><![CDATA[always]]></previewTextMode>
+                <previewTextEffect dynamic="true"><![CDATA[none]]></previewTextEffect>
+                <horizontalTextAlignment dynamic="true"><![CDATA[center]]></horizontalTextAlignment>
+                <verticalTextAlignment dynamic="true"><![CDATA[top]]></verticalTextAlignment>
+            </Widget>
+        </widgets>
+    </Interface>
+</korsakow>

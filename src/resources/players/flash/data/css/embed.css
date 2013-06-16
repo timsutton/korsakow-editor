@@ -1,0 +1,76 @@
+
+.embedOverlay .button
+{
+    cursor: pointer;
+}
+
+#embedOverlayBackground
+{
+    background-color: #000000;
+    opacity: 0.35;
+    filter: opacity(alpha=35);
+    
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    
+    display: none;
+}
+#embedOverlay
+{
+    border: solid #666666 2px;
+    background-color: #ffffff;
+    
+    width: 320px;
+    height: 360px;
+    
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -160px;
+    margin-top: -200px;
+    
+    display: none;
+}
+#embedOverlay .close
+{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 0px;
+    margin-top: 5px;
+    margin-right: 0px;
+    
+    font-family: monospace;
+    font-size: 18px;
+    text-align: center;
+}
+#embedOverlay .content
+{
+    width: 280px;
+    margin: 30px auto;
+}
+#embedOverlay textarea
+{
+    width: 100%;
+    height: 100px;
+}
+#embedOverlay input
+{
+    width: 100%;
+}
+#embedOverlay input.disabled,
+#embedOverlay textarea.disabled
+{
+    background-color: #cccccc;
+}
+#embedOverlay .label
+{
+    font-weight: bold;
+}
+#embedOverlay .info
+{
+    font-size: 12px;
+}

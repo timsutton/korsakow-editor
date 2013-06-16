@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>$title$</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="korsakow system k-film database narrative documentary nonlinear procedural" />
+<meta name="description" content="The Korsakow-System is an easy-to-use computer program for the creation of database films. Korsakow-Films are films with a twist: They are interactive - the viewer has influence on the K-Film. They are rule-based - the author decides on the rules by which the scenes relate to each other, but s/he does not create fixed paths. K-Films are generative - the order of the scenes is calculated while viewing. Korsakow is not a religion." />
+<link media='screen' rel='stylesheet' type='text/css' href='data/css/style.css' />
+<link media='screen' rel='stylesheet' type='text/css' href='data/css/embed.css' />
+<script type='text/javascript' src='data/js/jquery-1.4.2.min.js'></script>
+<script type='text/javascript' src='data/js/swfobject.js'></script>
+<script type='text/javascript' src='data/js/korsakow.js' id="korsakow_js"></script>
+<script type='text/javascript'>
+if (window == top) {
+	document.write("<script type='text/javascript' src='data/js/swfaddress.js'></" + "script>"); // not sure why I break up the closing tag.
+}
+</script>
+<script type='text/javascript'>
+var atts = {};
+var params = {};
+var flashvars = {};
+
+atts.name = 
+atts.id = 'swf_container';
+params.base = 'data/';
+params.wmode = 'transparent'; // enables the html background to be seen, at a slight performance cost.
+params.allowScriptAccess = 'always';
+params.allowFullScreen = 'true';
+flashvars.basePath = '';
+flashvars.externalBindings = 'network'; // having external bindings when playing locally causes flash to display a security warning dialog
+flashvars.onReady = 'korsakowReady';
+flashvars.onError = 'korsakowError';
+if (window['SWFAddress'] && SWFAddress.getParameter('snu'))
+    flashvars.starter = SWFAddress.getParameter('snu');
+//flashvars.requireVersion = '20.3';
+
+// pull 'k_' prefixed query params into flashvars
+var qs = \$k.joinQueryString(window.location.search);
+for (var i = 0; i < qs.length; ++i) {
+	if (qs[i].name.indexOf('k_') ==0) {
+		flashvars[qs[i].name.substring('k_'.length)] = qs[i].value;
+	}
+}
+
+swfobject.embedSWF('data/KorsakowPlayer.swf', 'swf_container', '100%', '100%', '10.0', 'data/swf/expressInstall.swf', flashvars, params, atts);
+</script>
+</head>
+<body>
+<div id='swf_container'>Korsakow</div>
+<div id='embedOverlayBackground'></div>
+<div id='embedOverlay'>
+    <div class='button close' onclick='closeEmbedOverlay(); return false;'><img src='data/css/cross.png' alt='close' /></div>
+    <div class='content'>
+        <div class='p'>
+            <div class='label'>Share this film</div>
+            <div class='info'>Use this link to share the entire film.</div>
+            <input id='shareFilm' />
+        </div>
+        <div class='p'>
+            <div class='label'>Share this SNU</div>
+            <div class='info'>This link will start the film at the current SNU.</div>
+            <input id='shareSNU' />
+        </div>
+        <div class='p'>
+            <div class='label'>Embed code</div>
+            <div class='info'>Paste this code into your website or blog to embed this SNU.</div>
+            <textarea id='embedCode' cols='32' rows='6'></textarea>
+        </div>
+    </div>
+</div>
+<div style='color: 1234; line-height: 0; width:0; height: 0; overflow: hidden'>OTgyNTYwODQtOWYwNi00ODJkLTg5MmQtYWFmNTQ5MTAwOWI0</div>
+</body>
+</html>

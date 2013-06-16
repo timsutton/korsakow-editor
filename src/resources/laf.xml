@@ -1,0 +1,193 @@
+<laf>
+	<default>
+		<font type="Font">
+			<family>Lucida Sans Demi Bold</family>
+			<size>12</size>
+		</font>
+	</default>
+	<color>
+		<control type="Color" format="hex">bababa</control>
+	</color>
+	<component>
+		<!-- korsakow components -->
+		<CollapsiblePane>
+			<background type="Color" format="hex">d6d6d6</background>
+		</CollapsiblePane>
+		<CollapsiblePaneHeader>
+			<background  type="Color" format="hex">cbcbcb</background>
+			<background2 type="Color" format="hex">a7a7a7</background2>
+			<activeBackground  type="Color" format="hex">dddddd</activeBackground>
+			<activeBackground2 type="Color" format="hex">bababa</activeBackground2>
+			<borderColor type="Color" format="hex">636363</borderColor>
+			<borderSize type="Integer">1</borderSize>
+			<roundedCornerSize type="Integer">10</roundedCornerSize>
+			<margin type="Insets">
+				<left>10</left>
+				<top>0</top>
+				<right>0</right>
+				<bottom>0</bottom>
+			</margin>
+		</CollapsiblePaneHeader>
+		
+		<!-- swing components -->
+		<Button>
+			<background  type="Color" format="hex">dfdfdf</background>
+			<background2 type="Color" format="hex">dfdfdf</background2>
+			<activeBackground  type="Color" format="hex">fafafa</activeBackground>
+			<activeBackground2 type="Color" format="hex">fafafa</activeBackground2>
+			<inactiveBackground  type="Color" format="hex">bfbfbf</inactiveBackground>
+			<inactiveBackground2 type="Color" format="hex">bfbfbf</inactiveBackground2>
+			<selectBackground  type="Color" format="hex">cacaca</selectBackground>
+			<selectBackground2 type="Color" format="hex">cacaca</selectBackground2>
+		</Button>
+		<CheckBox>
+			<background  type="Color" format="hex">cbcbcb</background>
+			<background2 type="Color" format="hex">a7a7a7</background2>
+			<borderSize type="Integer">1</borderSize>
+			<borderColor type="Color" format="hex">747474</borderColor>
+		</CheckBox>
+		<CheckBoxMenuItem>
+		</CheckBoxMenuItem>
+		<ColorChooser>
+		</ColorChooser>
+		<ComboBox>
+			<background  type="Color" format="hex">cbcbcb</background>
+			<background2 type="Color" format="hex">a7a7a7</background2>
+			<borderColor type="Color" format="hex">747474</borderColor>
+			<borderSize type="Integer">1</borderSize>
+			<roundedCornerSize type="Integer">10</roundedCornerSize>
+			<selectionForeground type="Color" format="hex">ff0000</selectionForeground>
+		</ComboBox>
+		<EditorPane>
+		</EditorPane>
+		<FormattedTextField>
+		</FormattedTextField>
+		<Label>
+		</Label>
+		<List>
+			<altBackground type="Color" format="hex">bdbdbd</altBackground>
+			<background type="Color" format="hex">cdcdcd</background>
+			<selectionForeground  type="Color" format="hex">000000</selectionForeground>
+			<selectionBackground  type="Color" format="hex">e1e1e1</selectionBackground>
+			<focusCellBackground  type="Color" format="hex">e1e1e1</focusCellBackground>
+		</List>
+		<Menu>
+			<background type="Color" format="hex">d6d6d6</background>
+		</Menu>
+		<MenuBar>
+			<borderSize type="Integer">1</borderSize>
+			<background type="Color" format="hex">d6d6d6</background>
+		</MenuBar>
+		<MenuItem>
+			<background type="Color" format="hex">d6d6d6</background>
+		</MenuItem>
+		<OptionPane>
+		</OptionPane>
+		<Panel>
+			<background type="Color" format="hex">d6d6d6</background>
+		</Panel>
+		<PasswordField>
+		</PasswordField>
+		<PopupMenu>
+		</PopupMenu>
+		<ProgressBar>
+		
+		</ProgressBar>
+		<RadioButton>
+			<borderSize type="Integer">2</borderSize>
+			<borderColor type="Color" format="hex">747474</borderColor>
+		</RadioButton>
+		<RadioButtonMenuItem>
+		</RadioButtonMenuItem>
+		<ScrollPane>
+		</ScrollPane>
+		<Spinner>
+		</Spinner>
+		<TabbedPane>
+			<tabBackground type="Color" format="hex">bbbbbb</tabBackground>
+			<tabBackground2 type="Color" format="hex">909090</tabBackground2>
+			<selectedTabBackground type="Color" format="hex">eeeeee</selectedTabBackground>
+			<selectedTabBackground2 type="Color" format="hex">bbbbbb</selectedTabBackground2>
+			<tabInsets type="Insets">
+				<left>4</left>
+				<top>0</top>
+				<right>4</right>
+				<bottom>0</bottom>
+			</tabInsets>
+			<selectedTabPadInsets type="Insets">
+				<left>4</left>
+				<top>0</top>
+				<right>4</right>
+				<bottom>0</bottom>
+			</selectedTabPadInsets>
+			<roundedCornerSize type="Integer">10</roundedCornerSize>
+		</TabbedPane>
+		<Table>
+			<gridColor type="Color" format="hex">bdbdbd</gridColor>
+			<background type="Color" format="hex">cdcdcd</background>
+			<selectionForeground  type="Color" format="hex">000000</selectionForeground>
+			<selectionBackground  type="Color" format="hex">e1e1e1</selectionBackground>
+			<focusCellBackground  type="Color" format="hex">e1e1e1</focusCellBackground>
+		</Table>
+		<TableHeader>
+			<background type="Color" format="hex">cdcdcd</background>
+			<borderColor type="Color" format="hex">bdbdbd</borderColor>
+			<borderSize type="Integer">1</borderSize>
+			<sortedBackground type="Color" format="hex">eaeaea</sortedBackground>
+			<sortedBackground2 type="Color" format="hex">cdcdcd</sortedBackground2>
+		</TableHeader>
+		<TextArea>
+			<background  type="Color" format="hex">ffffff</background>
+		</TextArea>
+		<TextField>
+		<!--
+			This is the old bg gradient color used in the PDF. We might want to use it instead for non-editable textfields.
+			
+			<background  type="Color" format="hex">cbcbcb</background>
+			<background2 type="Color" format="hex">a7a7a7</background2>
+		-->
+			<background  type="Color" format="hex">ffffff</background>
+			<background2 type="Color" format="hex">ffffff</background2>
+			<inactiveBackground  type="Color" format="hex">cbcbcb</inactiveBackground>
+			<inactiveBackground2 type="Color" format="hex">a7a7a7</inactiveBackground2>
+			<borderSize type="Integer">1</borderSize>
+			<roundedCornerSize type="Integer">10</roundedCornerSize>
+			<margin type="Insets">
+				<left>0</left>
+				<top>0</top>
+				<right>0</right>
+				<bottom>0</bottom>
+			</margin>
+		</TextField>
+		<TextPane>
+		</TextPane>
+		<TitledBorder>
+		</TitledBorder>
+		<ToggleButton>
+		   	<background  type="Color" format="hex">dfdfdf</background>
+			<background2 type="Color" format="hex">dfdfdf</background2>
+			<activeBackground  type="Color" format="hex">fafafa</activeBackground>
+			<activeBackground2 type="Color" format="hex">fafafa</activeBackground2>
+			<selectedBackground  type="Color" format="hex">ababab</selectedBackground>
+			<selectedBackground2 type="Color" format="hex">949494</selectedBackground2>
+			<selectedActiveBackground  type="Color" format="hex">ababab</selectedActiveBackground>
+			<selectedActiveBackground2 type="Color" format="hex">ababab</selectedActiveBackground2>
+			<inactiveBackground  type="Color" format="hex">cbcbcb</inactiveBackground>
+			<inactiveBackground2 type="Color" format="hex">cbcbcb</inactiveBackground2>
+		</ToggleButton>
+		<ToolBar>
+		</ToolBar>
+		<ToolTip>
+		</ToolTip>
+		<Tree>
+			<paintLines type="Boolean">true</paintLines>
+			<gridColor type="Color" format="hex">bdbdbd</gridColor>
+			<background type="Color" format="hex">cdcdcd</background>
+
+			<textBackground  type="Color" format="hex">eeeeee</textBackground>
+		</Tree>
+		<Viewport>
+			<background type="Color" format="hex">d6d6d6</background>
+		</Viewport>
+	</component>
+</laf>

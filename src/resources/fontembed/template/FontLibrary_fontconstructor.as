@@ -1,0 +1,1 @@
+			_fontsList.push( _fontsByName["${fontName}"] = ${variableName} );

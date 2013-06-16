@@ -1,0 +1,212 @@
+<project name="Korsakow" default="default" basedir="../">
+	
+	<!-- input -->
+	<target name="userInput1">
+		<input
+		    message="Milestone Version (eg: 8.0):"
+		    addproperty="release-number"
+			defaultvalue="x"
+		/>
+		<input 
+		    message="Upload successful build?"
+			validargs="y,n"
+			defaultvalue="n"
+		    addproperty="ssh.do1"
+		/>
+		<condition property="ssh.do" value="y">
+			<equals arg1="${ssh.do1}" arg2="y" />
+		</condition>
+	</target>
+	<target name="userInput2" if="ssh.do">
+		<input 
+		    message="(optional) SSH username:"
+		    addproperty="ssh.user"
+		/>
+		<input
+		    message="(optional) SSH password:"
+		    addproperty="ssh.pass"
+		/>
+	</target>
+	<target name="userInput" depends="userInput1, userInput2">
+        <property name="release-number" value="0.0" />
+	</target>
+	<!-- /input -->
+	
+	<!-- config -->
+	<property name="lib-dir" location="lib" />
+	<property name="src-dir" location="src" />
+	<property name="resources-dir" location="${src-dir}/resources" />
+	<property name="build-dir" location="build" />
+	<property name="korsakow-compile-dir" location="build/compile/korsakow" />
+	<property name="dist-dir" location="build/dist" />
+	<property name="osx" value="osx" />
+	<property name="win32" value="win32" />
+	<property name="multiplaf" value="multiplaf" />
+	<property name="plaf-osx-dir" value="plaf/${osx}" />
+	<property name="plaf-win32-dir" value="plaf/${win32}" />
+	<property name="plaf-multiplaf-dir" value="plaf/${multiplaf}" />
+	<property name="resources-dir" location="src/resources" />
+	<property name="korsakow-filename" value="lib.jar" />
+	<property name="korsakow-manifest" value="ant/korsakow-MANIFEST.MF" />
+
+	<property name="non-osx-resources" value="resources/**/${win32}/*" />	
+	<property name="non-win32-resources" value="resources/**/${osx}/*" />	
+		
+	<fileset id="lib-jars" casesensitive="true" dir="${lib-dir}" >
+		<patternset>
+			<include name="*.jar" />
+		</patternset>
+	</fileset>
+	
+	<fileset id="resources-files" casesensitive="true" dir="${resources-dir}" />
+	<fileset id="src-non-java-files" casesensitive="true" dir="${src-dir}">
+		<patternset>
+			<include name="*.properties" />
+		</patternset>
+	</fileset>
+	
+	<fileset id="circle-of-life" casesensitive="true" dir="${resources-dir}/example" />
+
+	<!-- /config -->
+	
+	<!-- (real) targets -->
+
+	<target name="clean">
+		<delete dir="${build-dir}" />
+	</target>
+
+	<target name="init">
+		<tstamp />
+		<echo message="Build ${release-number}" />
+		<buildnumber file="${resources-dir}/build"/>
+		<propertyfile file="${resources-dir}/build">
+			<entry key="release.number" value="${release-number}" />
+		</propertyfile>
+	</target>
+	
+	<target name="compile" depends="init">
+		<mkdir dir="${korsakow-compile-dir}" />
+		<javac srcdir="${src-dir}"  destdir="${korsakow-compile-dir}" debug="true" debuglevel="lines,vars,source">
+			<classpath>
+				<fileset refid="lib-jars" />
+			</classpath>
+		</javac>
+	</target>
+	
+	<target name="extract-libs" depends="init">
+		<unjar dest="${korsakow-compile-dir}">
+			<fileset refid="lib-jars" />
+		</unjar>
+	</target>
+	
+	<target name="dist-common" depends="compile, extract-libs">
+		<mkdir dir="${dist-dir}" />
+		<copy todir="${korsakow-compile-dir}/src">
+			<fileset file="${src-dir}" />
+		</copy>
+		<copy todir="${korsakow-compile-dir}">
+			<fileset refid="src-non-java-files" />
+		</copy>
+	</target>
+	
+	<target name="dist-osx" depends="dist-common">
+		<mkdir dir="${dist-dir}/${plaf-osx-dir}" />
+		<property name="osx-output" value="${dist-dir}/korsakow-${release-number}-${osx}.zip" />
+		<!-- setup OSX App -->
+		<copy todir="${dist-dir}/${plaf-osx-dir}/Korsakow.app">
+			<fileset dir="${lib-dir}/osx/Korsakow.app" />
+		</copy>
+
+		<mkdir dir="${dist-dir}/${plaf-osx-dir}/Korsakow.app/Contents/Resources/Java/resources" />
+		<!--
+		Doesn't preserve unix file permissions (in particular the executable bit)
+		<copy todir="${dist-dir}/${plaf-osx-dir}/Korsakow.app/Contents/Resources/Java/resources/">
+			<fileset refid="resources-files" />
+		</copy>
+		-->
+		<exec executable="rsync" failonerror="true" logerror="true" >
+		       <arg value="--recursive" />
+		       <arg value="--times" />
+		       <arg value="--perms" />
+		       <arg value="--executability" />
+		       <arg value="--whole-file" />
+		       <arg value="--prune-empty-dirs" />
+		       <arg value="--exclude=*/.svn/" />
+		       <arg value="--exclude=*/win32/*" />
+		       <arg value="--exclude=*/win32" />
+		       <arg value="--exclude=/resources/example/" />
+			
+		       <arg value="${resources-dir}" />
+		       <arg value="${dist-dir}/${plaf-osx-dir}/Korsakow.app/Contents/Resources/Java/" />
+		     </exec>
+
+		<copy todir="${dist-dir}/${plaf-osx-dir}/Korsakow.app/Contents/Resources/Java/example">
+			<fileset dir="${resources-dir}/example" />
+		</copy>
+		
+		<copy todir="${dist-dir}/${plaf-osx-dir}/Korsakow.app/Contents/Resources/Java">
+			<fileset file="${lib-dir}/osx/OSXApplication.jar" />
+		</copy>
+		
+		<!-- lame.. the executable perm isnt preserved... thankfully this is the only one -->
+		<chmod perm="ug+rx" file="${dist-dir}/${plaf-osx-dir}/Korsakow.app/Contents/MacOS/JavaApplicationStub" />
+		<jar jarfile="${dist-dir}/${plaf-osx-dir}/Korsakow.app/Contents/Resources/Java/${korsakow-filename}" basedir="${korsakow-compile-dir}" excludes="${non-osx-resources}" manifest="${korsakow-manifest}" compress="true" level="9" />
+		
+		<exec executable="codesign" failonerror="true" logerror="true">
+          <arg value="-f" />
+          <arg value="-s" />
+          <arg value="Developer ID Application: David Reisch" />
+          <arg value="${dist-dir}/${plaf-osx-dir}/Korsakow.app" />
+		</exec>
+		
+		<zip level="9" compress="true" file="${osx-output}">
+			<zipfileset dir="${dist-dir}/${plaf-osx-dir}/" filemode="775" />
+		</zip>
+		
+	</target>
+
+	<target name="dist-win32" depends="dist-common">
+		<mkdir dir="${dist-dir}/${plaf-win32-dir}" />
+		<copy todir="${dist-dir}/${plaf-win32-dir}/">
+			<fileset file="${lib-dir}/win32/Korsakow.exe" />
+		</copy>
+		<jar jarfile="${dist-dir}/${plaf-win32-dir}/${korsakow-filename}" basedir="${korsakow-compile-dir}" excludes="${non-win32-resources}" manifest="${korsakow-manifest}" compress="true" level="9" />
+		<mkdir dir="${dist-dir}/${plaf-win32-dir}/example" />
+		<copy todir="${dist-dir}/${plaf-win32-dir}/example/">
+					<fileset refid="circle-of-life" />
+		</copy>
+		<copy 
+			todir="${dist-dir}/${plaf-win32-dir}/resources"
+			includeemptydirs="false"
+			>
+					<fileset dir="${resources-dir}">
+						<exclude name="${resources-dir}/example/**" />
+						<exclude name="example/**" />
+						<exclude name="*/osx/*" />
+						<exclude name="*/.svn/*" />
+					</fileset>
+		</copy>
+		<property name="win32-output" value="${dist-dir}/korsakow-${release-number}-${win32}.zip" />
+		<zip level="9" compress="true" basedir="${dist-dir}/${plaf-win32-dir}/" file="${win32-output}" />
+	</target>
+
+	<target name="dist-all" depends="dist-osx, dist-win32">
+	</target>
+	
+	<!--
+		A helper to upload the build.
+	-->
+	<target name="upload" if="ssh.do">
+		<property name="ssh.host" value="korsakow.net" />
+		<scp todir="${ssh.user}@${ssh.host}:korsakow.net/releases/" password="${ssh.pass}" verbose="true">
+			<fileset file="${osx-output}" />
+			<fileset file="${win32-output}" />
+		</scp>
+	</target>
+
+	<!-- /targets -->
+	
+	<target name="default" depends="userInput, clean, dist-all, upload">
+	</target>
+
+</project>
