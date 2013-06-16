@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Interface>
+    <id><![CDATA[29]]></id>
+    <name><![CDATA[Test Interface]]></name>
+    <gridWidth><![CDATA[20]]></gridWidth>
+    <gridHeight><![CDATA[20]]></gridHeight>
+    <keywords/>
+    <widgets>
+        <Widget>
+            <id><![CDATA[22]]></id>
+            <type><![CDATA[org.korsakow.widget.MainMedia]]></type>
+            <x><![CDATA[180]]></x>
+            <y><![CDATA[40]]></y>
+            <width><![CDATA[640]]></width>
+            <height><![CDATA[480]]></height>
+            <keywords/>
+        </Widget>
+        <Widget>
+            <id><![CDATA[23]]></id>
+            <type><![CDATA[org.korsakow.widget.SnuAutoLink]]></type>
+            <x><![CDATA[180]]></x>
+            <y><![CDATA[540]]></y>
+            <width><![CDATA[200]]></width>
+            <height><![CDATA[150]]></height>
+            <keywords/>
+            <index dynamic="true"><![CDATA[0]]></index>
+            <previewTextMode dynamic="true"><![CDATA[always]]></previewTextMode>
+            <previewTextEffect dynamic="true"><![CDATA[none]]></previewTextEffect>
+        </Widget>
+        <Widget>
+            <id><![CDATA[24]]></id>
+            <type><![CDATA[org.korsakow.widget.SnuAutoLink]]></type>
+            <x><![CDATA[400]]></x>
+            <y><![CDATA[540]]></y>
+            <width><![CDATA[200]]></width>
+            <height><![CDATA[150]]></height>
+            <keywords/>
+            <index dynamic="true"><![CDATA[1]]></index>
+            <previewTextMode dynamic="true"><![CDATA[always]]></previewTextMode>
+            <previewTextEffect dynamic="true"><![CDATA[none]]></previewTextEffect>
+        </Widget>
+        <Widget>
+            <id><![CDATA[25]]></id>
+            <type><![CDATA[org.korsakow.widget.SnuAutoLink]]></type>
+            <x><![CDATA[620]]></x>
+            <y><![CDATA[540]]></y>
+            <width><![CDATA[200]]></width>
+            <height><![CDATA[150]]></height>
+            <keywords/>
+            <index dynamic="true"><![CDATA[2]]></index>
+            <previewTextMode dynamic="true"><![CDATA[always]]></previewTextMode>
+            <previewTextEffect dynamic="true"><![CDATA[none]]></previewTextEffect>
+        </Widget>
+    </widgets>
+</Interface>
