@@ -33,8 +33,8 @@
 	<!-- /input -->
 	
 	<!-- config -->
-	<property name="lib-dir" location="lib" />
-	<property name="src-dir" location="src" />
+	<property name="lib-dir" location="main/lib" />
+	<property name="src-dir" location="main/src" />
 	<property name="resources-dir" location="${src-dir}/resources" />
 	<property name="build-dir" location="build" />
 	<property name="korsakow-compile-dir" location="build/compile/korsakow" />
