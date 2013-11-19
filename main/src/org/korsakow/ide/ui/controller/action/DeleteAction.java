@@ -38,42 +38,6 @@ import org.korsakow.ide.util.UIUtil;
 
 public class DeleteAction implements ActionListener, KeyListener
 {
-	private static class NodeContext
-	{
-		final public KNode parent;
-		final public Integer childIndex;
-		final public IResource child;
-		public NodeContext(KNode parent, Integer childIndex, IResource child)
-		{
-			this.parent = parent;
-			this.childIndex = childIndex;
-			this.child = child;
-		}
-	}
-	private static class UseContext
-	{
-		private final Collection<IResource> references;
-		private final ResourceEditor editor;
-		public UseContext(ResourceEditor editor)
-		{
-			this(editor, null);
-		}
-		public UseContext(Collection<IResource> references)
-		{
-			this(null, references);
-		}
-		public UseContext(ResourceEditor editor, Collection<IResource> references)
-		{
-			this.editor = editor;
-			this.references = references;
-		}
-		public ResourceEditor getEditor() {
-			return editor;
-		}
-		public Collection<IResource> getReferences() {
-			return references;
-		}
-	}
 	private final ResourceTreeTable treeTable;
 	public DeleteAction(ResourceTreeTable treeTable)
 	{
@@ -120,13 +84,13 @@ public class DeleteAction implements ActionListener, KeyListener
 				int inUseAndAlsoToDeleteCount = 0;
 				final IResource resource = ResourceInputMapper.map(node.getResourceId());
 				final UseContext references = resourcesInUse.get(resource);
-				if ( references != null && references.references != null) {
-					for (IResource inUse : references.references) {
+				if ( references != null) {
+					for (IResource inUse : references.getReferences()) {
 						if ( resourcesToDelete.contains(inUse) ) {
 							++inUseAndAlsoToDeleteCount;
 						}
 					}
-					if (inUseAndAlsoToDeleteCount == references.references.size()) {
+					if (inUseAndAlsoToDeleteCount == references.getReferences().size()) {
 						resourcesToAutomaticallyBreakLinks.add(node);
 					}
 				}
@@ -152,7 +116,7 @@ public class DeleteAction implements ActionListener, KeyListener
 				if ( delete(resource) ) {
 					for ( IResource key : resourcesInUse.keySet() ) {
 						UseContext ctx = resourcesInUse.get(key);
-						ctx.references.remove(resource);
+						ctx.getReferences().remove(resource);
 					}
 					
 					// removing unrooted nodes via the model is... problematic (throws a NPE)
@@ -251,7 +215,7 @@ public class DeleteAction implements ActionListener, KeyListener
 							continue;
 						ctx.getEditor().dispose();
 					}
-					if (ctx.getReferences() != null) {
+					if (!ctx.getReferences().isEmpty()) {
 						Request request = new Request();
 						request.set("id", resource.getId());
 						Response response = CommandExecutor.executeCommand( RemoveReferencesToResourceCommand.class, request );
@@ -284,4 +248,29 @@ public class DeleteAction implements ActionListener, KeyListener
 			actionPerformed(null);
 	}
 	public void keyTyped(KeyEvent e){}
+}
+
+class UseContext
+{
+	private final Collection<IResource> references;
+	private final ResourceEditor editor;
+	public UseContext(ResourceEditor editor)
+	{
+		this(editor, new ArrayList<IResource>());
+	}
+	public UseContext(Collection<IResource> references)
+	{
+		this(null, references);
+	}
+	public UseContext(ResourceEditor editor, Collection<IResource> references)
+	{
+		this.editor = editor;
+		this.references = references;
+	}
+	public ResourceEditor getEditor() {
+		return editor;
+	}
+	public Collection<IResource> getReferences() {
+		return references;
+	}
 }
