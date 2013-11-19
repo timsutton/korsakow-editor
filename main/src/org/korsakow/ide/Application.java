@@ -36,6 +36,7 @@ import javax.swing.undo.UndoManager;
 
 import org.apache.log4j.Logger;
 import org.dsrg.soenea.domain.MapperException;
+import org.dsrg.soenea.domain.mapper.DomainObjectNotFoundException;
 import org.dsrg.soenea.service.Registry;
 import org.korsakow.domain.interf.IProject;
 import org.korsakow.domain.interf.IResource;
@@ -426,20 +427,26 @@ public class Application
 	 */
 	public Collection<ResourceEditor> getOpenEditors()
 	{
-		return new ArrayList<ResourceEditor>(mostRecentFocusedEditors); // cast OK since the source is a list
+		return new ArrayList<ResourceEditor>(mostRecentFocusedEditors);
 	}
 	/**
 	 * 
 	 * @param editor
-	 * @return TODO: could this ever return null?
 	 * @throws MapperException 
 	 */
 	public IResource getResourceForEditor(ResourceEditor editor) throws MapperException
 	{
-		if (openEditors2.containsKey(editor))
-			return ResourceInputMapper.map(openEditors2.get(editor));
-		else
-			return null;
+		if (openEditors2.containsKey(editor)) {
+			try {
+				return ResourceInputMapper.map(openEditors2.get(editor));
+			} catch (DomainObjectNotFoundException e) {
+				// unexpected, but has been observed in error reports
+				// in any case, callsites expect the null, and there's
+				// not much useful we can do.
+				Logger.getLogger(Application.class).error("", e);
+			}
+		}
+		return null;
 	}
 	public void setSnuPoolDialog(final JFrame dialog, final SnuPool pool)
 	{
