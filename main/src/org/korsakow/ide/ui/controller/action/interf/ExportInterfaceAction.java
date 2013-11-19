@@ -85,6 +85,6 @@ public class ExportInterfaceAction implements ActionListener
     }
 
     private Boolean isValidResourceNode(KNode node) {
-        return node != null && node instanceof ResourceNode;
+        return node instanceof ResourceNode;
     }
 }
