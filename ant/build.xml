@@ -148,6 +148,20 @@
 			<fileset file="${lib-dir}/osx/OSXApplication.jar" />
 		</copy>
 		
+
+
+		<property file="${resources-dir}/build" />
+
+		<exec executable="sh" failonerror="true" logerror="true">
+			<arg value="-c" />
+			<arg value="/usr/libexec/PlistBuddy -c Add\ :CFBundleShortVersionString\ string ${dist-dir}/${plaf-osx-dir}/Korsakow.app/Contents/Info.plist" />
+		</exec>
+
+		<exec executable="sh" failonerror="true" logerror="true">
+			<arg value="-c" />
+			<arg value="/usr/libexec/PlistBuddy -c Set\ :CFBundleShortVersionString\ ${version.number} ${dist-dir}/${plaf-osx-dir}/Korsakow.app/Contents/Info.plist" />
+		</exec>
+
 		<!-- lame.. the executable perm isnt preserved... thankfully this is the only one -->
 		<chmod perm="ug+rx" file="${dist-dir}/${plaf-osx-dir}/Korsakow.app/Contents/MacOS/JavaApplicationStub" />
 		<jar jarfile="${dist-dir}/${plaf-osx-dir}/Korsakow.app/Contents/Resources/Java/${korsakow-filename}" basedir="${korsakow-compile-dir}" excludes="${non-osx-resources}" manifest="${korsakow-manifest}" compress="true" level="9" />
